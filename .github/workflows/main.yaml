@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - name: Install dependencies
-        run: sudo apt install sbcl libwebkit2gtk-4.1-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install sbcl libwebkit2gtk-4.1-dev
       - name: Checkout atlas-engineer/nyxt
         uses: actions/checkout@v4
         with:
