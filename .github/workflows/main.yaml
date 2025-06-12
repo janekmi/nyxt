@@ -7,7 +7,7 @@ jobs:
   Build:
     runs-on: ubuntu-24.04-arm
     container:
-      image: dtcooper/raspberrypi-os:latest
+      image: dtcooper/raspberrypi-os:bullseye
     steps:
       - name: Install dependencies
         # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
