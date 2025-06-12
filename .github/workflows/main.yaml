@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  push:
+
+jobs:
+  Build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout atlas-engineer/nyxt
+        uses: actions/checkout@v4
+        with:
+          repository: atlas-engineer/nyxt
+          ref: 3.12.0
+          submodules: 'recursive'
+          fetch-depth: 1
+      - name: Make
+        working-directory: nyxt
+        run: make all -j
+      - name: Upload binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: nyxt
+          path: nyxt/nyxt
