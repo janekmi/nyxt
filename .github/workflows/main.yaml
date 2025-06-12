@@ -16,7 +16,7 @@ jobs:
           submodules: 'recursive'
           fetch-depth: 1
       - name: Install requirements
-        run: sudo apt install sbcl
+        run: sudo apt install sbcl libwebkit2gtk-4.1-dev
       - name: Make
         working-directory: nyxt
         run: make all -j
