@@ -12,7 +12,7 @@ jobs:
       - name: Install dependencies
         run: |
           apt update
-          apt-get install -y git sbcl
+          apt-get install -y git make sbcl
         # libwebkit2gtk-4.1-dev
       - name: Checkout atlas-engineer/nyxt
         uses: actions/checkout@v4
