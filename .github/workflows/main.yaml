@@ -10,9 +10,10 @@ jobs:
       image: dtcooper/raspberrypi-os:latest
     steps:
       - name: Install dependencies
+        # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
         run: |
           apt update
-          apt-get install -y git make sbcl libglib2.0-dev
+          apt-get install -y git make sbcl libwebkit2gtk-4.0-dev gobject-introspection glib-networking gsettings-desktop-schemas libfixposix-dev pkg-config xclip enchant-2 libssl-dev
         # libglib2.0-dev provides libgobject-2.0.so
         # libwebkit2gtk-4.1-dev
       - name: Checkout atlas-engineer/nyxt
