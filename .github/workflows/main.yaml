@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-24.04-arm
     container:
       image: dtcooper/raspberrypi-os:bullseye
-      options: --memory 13g --memory-swap 10g
+      options: --memory 13g --memory-swap 23g
     steps:
       - name: Install dependencies
         # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
