@@ -20,7 +20,7 @@ jobs:
         run: |
           apt update
           apt install -y git make clisp build-essential tree
-          lisp --version
+          clisp --version
       # - name: Checkout SBCL
       #   run: git clone git://git.code.sf.net/p/sbcl/sbcl --depth 1 --branch sbcl-2.5.5 
       # - name: Build SBCL
