@@ -43,8 +43,6 @@ jobs:
           fetch-depth: 1
       - name: Make
         working-directory: nyxt
-        env:
-          LISP: clisp
         run: make all -j
       - name: Upload binary
         uses: actions/upload-artifact@v4
