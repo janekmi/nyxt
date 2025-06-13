@@ -22,13 +22,13 @@ jobs:
           apt install -y git make sbcl tree
           sbcl --version
       - name: Checkout SBCL
-        run: git clone git://git.code.sf.net/p/sbcl/sbcl
+        run: git clone git://git.code.sf.net/p/sbcl/sbcl --depth 1 --branch sbcl-2.5.5 
       - name: Build SBCL
         working-directory: sbcl
         run: |
           make.sh
-          install.sh
           apt remote -y sbcl
+          install.sh
           sbcl --version
       - name: Install dependencies
         # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
