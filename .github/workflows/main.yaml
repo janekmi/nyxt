@@ -14,13 +14,25 @@ jobs:
     runs-on: ubuntu-24.04-arm
     container:
       image: dtcooper/raspberrypi-os:bullseye
-      options: --memory 13g --memory-swap 23g
+      # options: --memory 13g --memory-swap 23g
     steps:
-      - name: Install dependencies
-        # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
+      - name: Install basics
         run: |
           apt update
-          apt-get install -y git make sbcl libwebkit2gtk-4.0-dev gobject-introspection glib-networking gsettings-desktop-schemas libfixposix-dev pkg-config xclip enchant-2 libssl-dev
+          apt install git make sbcl tree
+          sbcl --version
+      - name: Checkout SBCL
+        run: git clone git://git.code.sf.net/p/sbcl/sbcl
+      - name: Build SBCL
+        working-directory: sbcl
+        run: |
+          make.sh
+          install.sh
+          apt remote sbcl
+          sbcl --version
+      - name: Install dependencies
+        # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
+        run: apt install -y libwebkit2gtk-4.0-dev gobject-introspection glib-networking gsettings-desktop-schemas libfixposix-dev pkg-config xclip enchant-2 libssl-dev
         # libglib2.0-dev provides libgobject-2.0.so
         # libwebkit2gtk-4.1-dev
       - name: Checkout atlas-engineer/nyxt
