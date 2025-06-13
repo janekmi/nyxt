@@ -19,15 +19,14 @@ jobs:
       - name: Install basics
         run: |
           apt update
-          apt install -y git make sbcl build-essential tree
-          sbcl --version
+          apt install -y git make cmucl build-essential tree
+          lisp --version
       - name: Checkout SBCL
         run: git clone git://git.code.sf.net/p/sbcl/sbcl --depth 1 --branch sbcl-2.5.5 
       - name: Build SBCL
         working-directory: sbcl
         run: |
-          ./make.sh
-          apt remote -y sbcl
+          ./make.sh --xc-host='lisp -batch -noinit'
           ./install.sh
           sbcl --version
       - name: Install dependencies
