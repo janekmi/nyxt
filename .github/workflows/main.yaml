@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-  dispatch:
+  workflow_dispatch:
     inputs:
       ref:
         type: string
