@@ -14,21 +14,20 @@ jobs:
     runs-on: ubuntu-24.04-arm
     container:
       image: dtcooper/raspberrypi-os:bullseye
-      # options: --memory 13g --memory-swap 23g
     steps:
       - name: Install basics
         run: |
           apt update
           apt install -y git make clisp build-essential tree
           clisp --version
-      # - name: Checkout SBCL
-      #   run: git clone git://git.code.sf.net/p/sbcl/sbcl --depth 1 --branch sbcl-2.5.5 
-      # - name: Build SBCL
-      #   working-directory: sbcl
-      #   run: |
-      #     ./make.sh --xc-host='lisp -batch -noinit'
-      #     ./install.sh
-      #     sbcl --version
+      - name: Checkout SBCL
+        run: git clone git://git.code.sf.net/p/sbcl/sbcl --depth 1 --branch sbcl-2.5.5 
+      - name: Build SBCL
+        working-directory: sbcl
+        run: |
+          ./make.sh --xc-host='clisp'
+          ./install.sh
+          sbcl --version
       - name: Install dependencies
         # Ref: https://github.com/atlas-engineer/nyxt/blob/3.12.0/documents/README.org
         run: apt install -y libwebkit2gtk-4.0-dev gobject-introspection glib-networking gsettings-desktop-schemas libfixposix-dev pkg-config xclip enchant-2 libssl-dev
